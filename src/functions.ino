@@ -3,7 +3,7 @@
 // State of the box
 uint8_t getState(void) {
 	// Should get the state, unsigned number between 0 and 4, inclusive
-	uint8_t state = 4;
+	uint8_t state = 1;
 	return state;
 }
 
