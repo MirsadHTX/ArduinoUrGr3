@@ -2,9 +2,20 @@
 
 // State of the box
 uint8_t getState(void) {
-	// Should get the state, unsigned number between 0 and 3, inclusive
-	uint8_t state = 3;
+	// Should get the state, unsigned number between 0 and 4, inclusive
+	uint8_t state = 4;
 	return state;
+}
+
+// Calendar
+// Should show how many days left until the next 24. of december
+void calendar(void) {
+	lcd.clear();
+	lcd.setCursor(0, 0);
+	lcd.print("Days left:");
+	lcd.setCursor(0, 1);
+	lcd.print(clock.dayOfMonth, DEC);
+	delay(100);
 }
 
 // Clock related functions
@@ -19,7 +30,7 @@ void printTime(void) {
 	lcd.print(clock.minute, DEC);
 	lcd.print(":");
 	lcd.print(clock.second, DEC);
-	// Sets the cursor to 16 - the length of the date
+	// Sets the cursor to 16 - (length)
 	lcd.setCursor(11, 0);
 	lcd.print(clock.month, DEC);
 	lcd.print("/");

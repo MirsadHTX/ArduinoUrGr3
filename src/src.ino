@@ -38,5 +38,7 @@ void loop() {
 		printTemp();
 	} else if (getState() == 3) {
 		getName();
+	} else if (getState() == 4) {
+		calendar();
 	}
 }
