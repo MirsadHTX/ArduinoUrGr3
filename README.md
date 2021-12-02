@@ -1,6 +1,10 @@
 # Arduino Ur
 ## Description
 Vi har lavet et ur ud af en arduino uno, revision 3.
+## Pseudo-code
+## Flow-chart
++ Start main
+## State-chart
 ## Credits
 Lavet af:
 [Ludvig Schou-Hansen](https://github.com/LAHVIG)
