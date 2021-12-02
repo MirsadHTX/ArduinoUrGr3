@@ -1,9 +1,11 @@
 # Arduino Ur
 
 ## Description
-Vi har lavet et ur ud af en arduino uno, revision 3.
+Vi har lavet et ur ud af en arduino uno, revision 3, samt en masse moduler fra [seeed](https://www.seeedstudio.com).
 
 ## Pseudo-code
+Her er vores pseudo-code for at få et overblik over vores software's struktur.
+
 * Pre-processing
 * Start setup
 * Initialize moduler
@@ -18,11 +20,13 @@ Vi har lavet et ur ud af en arduino uno, revision 3.
 * Printer tid
 
 ## Flow-chart
+Her er et flow-chart for at få et overblik over vores software's flow.
 
 ## State-chart
+Her er et state-chart for at få et overblik over vores software's forskellige states,  og hvordan der skiftes imellem dem:
 
 ## Authors
-Lavet af:
+Dette software er lavet af:
 
 * [Ludvig Schou-Hansen](https://github.com/LAHVIG)
 
@@ -47,3 +51,20 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Fork this project to create your own MIT license that you can always link to.
+
+## Tools
+Her er de forskellige redskaber vi har brugt til at lave vores projekt:
+
+### Software
+* [Lucidchart](https://lucid.app)
+* [Neovim](https://neovim.io)
+* [Visual Studio Code](https://code.visualstudio.com)
+* [Arduino-ide](https://www.arduino.cc/en/guide/windows)
+* [Arduino-cli](https://arduino.github.io/arduino-cli)
+* [git](https://git-scm.com)
+* [github](https://github.com)
+* [trello](https://trello.com)
+
+### Hardware
+ * [Arduino UNO, revision 3](https://www.arduino.cc/en/Main/arduinoBoardUno&gt)
+ * [Arduino Grove shield & modules](https://www.seeedstudio.com/category/Grove-c-1003.html)
