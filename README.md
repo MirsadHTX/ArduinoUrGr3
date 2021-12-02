@@ -4,12 +4,18 @@
 Vi har lavet et ur ud af en arduino uno, revision 3.
 
 ## Pseudo-code
+* Pre-processing
 * Start setup
 * Initialize moduler
 * Initialize pins
 * Slut setup
 * Start loop
 * Checker state
+* **State 1**
+* Checker ugedag
+* Printer tid
+* **State 2**
+* Printer tid
 
 ## Flow-chart
 
@@ -41,6 +47,3 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Fork this project to create your own MIT license that you can always link to.
-
-## Features
-If your project has a lot of features, list them here.
