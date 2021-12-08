@@ -4,26 +4,44 @@
 Vi har lavet et ur ud af en arduino uno, revision 3, samt en masse moduler fra [seeed](https://www.seeedstudio.com).
 
 ## Pseudo-code
-Her er vores pseudo-code for at få et overblik over vores software's struktur.
+Her er vores pseudo-code for at få et overblik over vores software's struktur:
 
 * Pre-processing
-* Start setup
+* Start **setup**
 * Initialize moduler
 * Initialize pins
-* Slut setup
-* Start loop
+* Slut **setup**
+* Start **loop**
 * Checker state
-* **State 1**
+* **State 0**
 * Checker ugedag
 * Printer tid
+* **State 1**
+* Reads A0 - analogue knob
+* Prints instructions
+* Prints time selected time - if no, restarts **state 1**
+* Checks for activation
+* Prints total time
+* Prints time left
+* Colors screen according to time left
+* Outputs sound according to time left
 * **State 2**
-* Printer tid
+* Calculates temperature
+* Prints temperature
+* Prints sentence according to temperature
+* **State 3**
+* Checks if button is pressed - if no, restarts **state 3**
+* Print random name
+* **State 4**
+* Checks time until christmas
+* Prints days left
+* Prints statement relevant to date (birthday, holiday etc.)
 
 ## Flow-chart
-Her er et flow-chart for at få et overblik over vores software's flow.
+Her er et flow-chart for at få et overblik over vores software's flow:
 
-## State-chart
-Her er et state-chart for at få et overblik over vores software's forskellige states,  og hvordan der skiftes imellem dem:
+## State-diagram
+Her er et state-diagram for at få et overblik over vores software's forskellige states,  og hvordan der skiftes imellem dem:
 
 ## Authors
 Dette software er lavet af:

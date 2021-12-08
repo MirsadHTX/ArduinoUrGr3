@@ -1,8 +1,8 @@
-#include <Wire.h>
-#include <math.h>
-#include "MMA7660.h"
-#include "rgb_lcd.h"
-#include "DS1307.h"
+#include <Wire.h>     // Allows I2C connection
+#include <math.h>     // Allows calculation of temperature
+#include "MMA7660.h"  // Allows usage of 3d accelerometer
+#include "rgb_lcd.h"  // Allows usage of the rgb lcd
+#include "DS1307.h"   // Allows usage of the real time clock
 
 // Value for calculating temperature
 #define B 4275    // Value of thermistor
