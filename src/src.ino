@@ -22,23 +22,27 @@ MMA7660 accel; // I2C port
 DS1307  clock; // I2C port
 
 void setup() {
+	// Initalizes the three I2C ports
 	lcd.begin(16, 2);
 	accel.init();
 	clock.begin();
+	// Initalizes the button and speaker
 	pinMode(BUTTON, INPUT);
 	pinMode(SPEAKER, OUTPUT);
 }
 
 void loop() {
-	if (getState() == 0) {
+	// State checking
+	uint8_t state = getState();
+	if (state == 0) {
 		printTime();
-	} else if (getState() == 1) {
+	} else if (state == 1) {
 		printTimer();
-	} else if (getState() == 2) {
+	} else if (state == 2) {
 		printTemp();
-	} else if (getState() == 3) {
+	} else if (state == 3) {
 		getName();
-	} else if (getState() == 4) {
+	} else if (state == 4) {
 		calendar();
 	}
 }

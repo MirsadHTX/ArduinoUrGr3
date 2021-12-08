@@ -33,7 +33,9 @@ char names[30][10] = {
 };
 
 void getName(void) {
-	printName(names[random(0, 30)]);
+	// Prints a random name on line 0
+	print(names[random(0, 30)], 0);
+	// Loops infinetely until the button is pressed
 	while (digitalRead(BUTTON) == 0) {
 	}
 }

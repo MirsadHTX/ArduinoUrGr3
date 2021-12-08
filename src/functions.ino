@@ -21,7 +21,6 @@ void calendar(void) {
 // Clock related functions
 void printTime(void) {
 	// Print the time and date on the first line
-	// Print special dates, on second line
 	lcd.clear();
 	lcd.setCursor(0, 0);
 	clock.getTime();
@@ -35,7 +34,7 @@ void printTime(void) {
 	lcd.print(clock.month, DEC);
 	lcd.print("/");
 	lcd.print(clock.dayOfMonth);
-	// if statement for special dates on second line of lcd
+	// Print special dates, on second line
 	lcd.setCursor(0, 1);
 	switch (clock.dayOfWeek)// Friendly printout the weekday
 	{
@@ -66,7 +65,7 @@ void printTime(void) {
 
 // Timer related functions
 void printTimer(void) {
-	int secs = analogRead(A0);
+	int secs = analogRead(A0); // The knob
 	if (secs > 999) secs = 999;
 	lcd.clear();
 	lcd.setRGB(255, 255, 255);
@@ -78,10 +77,10 @@ void printTimer(void) {
 	if (digitalRead(2) > 0) {
 		for (int i = secs; i > 0; i--) {
 			lcd.clear();
-			// Setting colors depending on time left
-			if (i < secs / 8) {
+			// Setting colors and speaker depending on time left
+			if (i < (secs >> 3)) {
 				lcd.setRGB(255, 0, 0);
-			} else if (i < secs / 4) {
+			} else if (i < (secs >> 2)) {
 				lcd.setRGB(255, 255, 0);
 			}
 			lcd.setCursor(0, 0);
@@ -110,8 +109,10 @@ void printTemp(void) {
 	lcd.setCursor(0, 0);
 	// There is not a linear relation between the resistance and the temperature, but a logarithmic one
 	temperature = 1.0 / (log(1023.0 / analogRead(A1) - 1.0) / B + 1 / 298.15) - 273.15;
+	// Prints temperature
 	lcd.print(temperature);
 	lcd.print(" degrees C");
+	// Prints cute comments about temperature
 	lcd.setCursor(0, 1);
 	if (temperature > 30) {
 		lcd.print("This is too hot");
@@ -132,19 +133,11 @@ void printTemp(void) {
 }
 
 // Names
-// Turn this function into a more general use one, i.e:
 void print(const char* str, uint8_t line) {
 	lcd.clear();
 	lcd.setCursor(0, line);
 	lcd.setRGB(255, 255, 255);
 	lcd.print(str);
-}
-
-void printName(const char* name) {
-	lcd.clear();
-	lcd.setCursor(0, 0);
-	lcd.setRGB(255, 255, 255);
-	lcd.print(name);
 }
 
 // Speaker related functions:
