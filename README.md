@@ -40,8 +40,16 @@ Her er vores pseudo-code for at få et overblik over vores software's struktur:
 ## Flow-chart
 Her er et flow-chart for at få et overblik over vores software's flow:
 
+
+
+Dette var lavet i Lucidchart.
+
 ## State-diagram
 Her er et state-diagram for at få et overblik over vores software's forskellige states,  og hvordan der skiftes imellem dem:
+
+
+
+Dette var lavet i Lucidchart.
 
 ## Authors
 Dette software er lavet af:
