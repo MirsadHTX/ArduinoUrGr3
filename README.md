@@ -94,5 +94,5 @@ Her er de forskellige redskaber vi har brugt til at lave vores projekt:
 * [trello](https://trello.com)
 
 ### Hardware
- * [Arduino UNO, revision 3](https://www.arduino.cc/en/Main/arduinoBoardUno&gt)
+* [Arduino UNO, revision 3](https://www.arduino.cc/en/Main/arduinoBoardUno&gt)
  * [Arduino Grove shield & modules](https://www.seeedstudio.com/category/Grove-c-1003.html)
