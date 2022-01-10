@@ -33,9 +33,14 @@ char names[30][10] = {
 };
 
 void getName(void) {
+	uint8_t gesture = 0;
 	// Prints a random name on line 0
-	print(names[random(0, 30)], 0);
-	// Loops infinetely until the button is pressed
-	while (digitalRead(BUTTON) == 0) {
+	paj7620ReadReg(0x43, 1, &gesture);
+	if (gesture == GES_UP_FLAG || gesture == GES_DOWN_FLAG || stateChanged) {
+		lcd.clear();
+		lcd.setCursor(0, 0);
+		lcd.setRGB(255, 255, 255);
+		lcd.print(names[random(0, 30)]);
 	}
+	stateChanged = 0;
 }

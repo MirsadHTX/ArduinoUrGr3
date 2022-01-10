@@ -3,8 +3,17 @@
 // State of the box
 uint8_t getState(void) {
 	// Should get the state, unsigned number between 0 and 4, inclusive
-	uint8_t state = 1;
-	return state;
+	uint8_t gesture = 0;
+	paj7620ReadReg(0x43, 1, &gesture);
+	if (gesture == GES_RIGHT_FLAG) {
+		state++;
+		stateChanged = 1;
+	}
+	if (gesture == GES_LEFT_FLAG) {
+		state--;
+		stateChanged = 1;
+	}
+	return state % 5;
 }
 
 // Calendar
@@ -36,10 +45,10 @@ void printTime(void) {
 	lcd.print(clock.dayOfMonth);
 	// Print special dates, on second line
 	lcd.setCursor(0, 1);
-	switch (clock.dayOfWeek)// Friendly printout the weekday
+	switch (clock.dayOfWeek) // Friendly printout the weekday
 	{
 		case MON:
-			lcd.print("Monday :c");
+			lcd.print("Monday :(");
 			break;
 		case TUE:
 			lcd.print("Tuesday");
@@ -65,41 +74,53 @@ void printTime(void) {
 
 // Timer related functions
 void printTimer(void) {
-	int secs = analogRead(A0); // The knob
-	if (secs > 999) secs = 999;
+	uint8_t gesture = 0;
+	paj7620ReadReg(0x43, 1, &gesture);
+	if (gesture == GES_UP_FLAG) {
+		secs += 10;
+	}
+	if (gesture == GES_DOWN_FLAG) {
+		if (secs > 10) {
+			secs -= 10;
+		} else {
+			secs = 10;
+		}
+	}
+	// if (secs > 999) secs = 999;
+	// if (secs < 0) secs = 0;
 	lcd.clear();
 	lcd.setRGB(255, 255, 255);
 	lcd.setCursor(0, 0);
-	lcd.print("Turn knob");
+	lcd.print("How many secs?");
 	lcd.setCursor(0, 1);
 	lcd.print(secs);
 	lcd.print(" seconds");
-	if (digitalRead(2) > 0) {
-		for (int i = secs; i > 0; i--) {
-			lcd.clear();
-			// Setting colors and speaker depending on time left
-			if (i < (secs >> 3)) {
-				lcd.setRGB(255, 0, 0);
-			} else if (i < (secs >> 2)) {
-				lcd.setRGB(255, 255, 0);
-			}
-			lcd.setCursor(0, 0);
-			lcd.print(secs);
-			lcd.print(" seconds");
-			lcd.setCursor(0, 1);
-			lcd.print(i);
-			lcd.print(" seconds left");
-			if (i == 3) {
-				digitalWrite(SPEAKER, HIGH);
-			}
-			delay(1000);
-			if (digitalRead(BUTTON) > 0) {
-				break;
-			}
-		}
-		digitalWrite(SPEAKER, LOW);
+	delay(100);
+	/* if (digitalRead(BUTTON) > 0) {
+		 for (int i = secs; i > 0; i--) {
+		 lcd.clear();
+	// Setting colors and speaker depending on time left
+	if (i < (secs >> 3)) {
+	lcd.setRGB(255, 0, 0);
+	} else if (i < (secs >> 2)) {
+	lcd.setRGB(255, 255, 0);
 	}
-	delay(250);
+	lcd.setCursor(0, 0);
+	lcd.print(secs);
+	lcd.print(" seconds");
+	lcd.setCursor(0, 1);
+	lcd.print(i);
+	lcd.print(" seconds left");
+	if (i == 3) {
+	digitalWrite(SPEAKER, HIGH);
+	}
+	delay(1000);
+	if (digitalRead(BUTTON) > 0) {
+	break;
+	}
+	}
+	digitalWrite(SPEAKER, LOW);
+	} */
 }
 
 // Temperature related stuff
@@ -130,14 +151,6 @@ void printTemp(void) {
 		lcd.print("Are you alive?");
 	}
 	delay(100);
-}
-
-// Names
-void print(const char* str, uint8_t line) {
-	lcd.clear();
-	lcd.setCursor(0, line);
-	lcd.setRGB(255, 255, 255);
-	lcd.print(str);
 }
 
 // Speaker related functions:
